@@ -12,6 +12,6 @@
   "dependencies": {
     "@fontsource/lato": "^5.0.17",
     "@fontsource/merriweather": "^5.0.8",
-    "astro": "^3.6.1"
+    "astro": "^4.0.2"
   }
 }
