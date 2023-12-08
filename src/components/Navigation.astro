@@ -1,4 +1,22 @@
 ---
+const navLinks = [
+  {
+    href: "/",
+    text: "Home",
+  },
+  {
+    href: "/about",
+    text: "About",
+  },
+  {
+    href: "/portfolio",
+    text: "Portfolio",
+  },
+  {
+    href: "/contact",
+    text: "Contact",
+  },
+]
 ---
 <button class="menu-btn" popovertarget="menu">
   <!-- <img> -->
@@ -11,11 +29,11 @@
     <span class="sr-only">Close menu</span>
   </button>
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/portfolio">Portfolio</a></li>
-    <li><a href="/contact">Contact</a></li>
+    {navLinks.map((item)=>(
+      <li><a href={item.href}>{item.text}</a></li>
+    ))}
   </ul>
+
 </nav>
 
 <style>
