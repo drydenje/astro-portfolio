@@ -2,12 +2,12 @@
 // const { items } = Astro.props;
 ---
 
-<ul>
+<ul class="diamond-list">
   <slot />
 </ul>
 
 <style is:global>
-  ul {
+  .diamond-list {
     list-style-type: none;
     padding: 0;
     margin: 0.5rem 0 1.2rem 0;
@@ -20,6 +20,9 @@
       padding-left: 0.5rem;
       color: var(--grey-900);
       min-width: 40vw;
+      @media(min-width: 900px) {
+        min-width: auto;
+      }
     }
 
     & li:before {
