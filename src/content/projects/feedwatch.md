@@ -1,0 +1,9 @@
+name="Project 5 - React Single Page App"
+urlGithub="https://github.com/drydenje/jeremy-dryden-project-5"
+urlLive="https://project-05-3b237.firebaseapp.com/"
+thumbnail={data.feedWatch}
+thumbnailAltText="Project 5: Feedwatch."
+keywords={['React', 'Firebase', 'API', 'Git']}
+description="My SPA React project lets the user store a keyword in Firebase, which is then used to pull the latest articles from Google's newsfeed. Due to api call limitations, the data is only updated when a keyword is added or removed."
+thisProject="project1"
+nextProject="project2"
