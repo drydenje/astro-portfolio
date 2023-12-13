@@ -1,7 +1,10 @@
 ---
 const { color } = Astro.props;
+import { getImage } from "astro:assets";
+import backgroundImage from "@/images/backgroundLeft.png";
+const optimizedBgImage = await getImage({ src: backgroundImage });
 ---
-<div class="panel">
+<div class="panel" style={`background-image: url('${optimizedBgImage.src}')`}>
   <slot />
 </div>
 
@@ -24,6 +27,26 @@ const { color } = Astro.props;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-y: scroll;
+
+    &:before {
+      background-attachment: fixed;
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.071;
+      background-repeat: no-repeat;
+      background-position: 50% 0;
+      -ms-background-size: cover;
+      -o-background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      background-size: cover;
+    }
   }
 
 </style>
