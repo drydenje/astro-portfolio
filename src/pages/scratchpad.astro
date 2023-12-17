@@ -1,0 +1,35 @@
+---
+import '@/styles/setup.css'
+import '@/styles/global.css'
+import { getImage } from "astro:assets";
+import panelBackground from "@/images/backgroundRight.png";
+import headerBackground from "@/images/backgroundLeft.png";
+const optimizedPanelImage = await getImage({ src: panelBackground });
+const optimizedHeaderImage = await getImage({ src: headerBackground });
+---
+
+<div class="grid_parent">
+  <header style={`background-image: url('${optimizedHeaderImage.src}');`}>Portfolio</header>
+  <div class="panel" style={`background-image: url('${optimizedPanelImage.src}');`}>panel</div>
+</div>
+
+<style>
+  .grid_parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100vh;
+  }
+
+  .grid_parent > * {
+    /* width: 50%; */
+  }
+
+  .grid_parent > header {
+    
+    background-color: var(--yellow-vivid-500);
+  }
+
+  .panel { 
+    background-color: var(--swamp);
+  }
+</style>

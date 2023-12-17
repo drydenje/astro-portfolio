@@ -3,15 +3,59 @@ const { color } = Astro.props;
 import { getImage } from "astro:assets";
 import backgroundImage from "@/images/backgroundLeft.png";
 const optimizedBgImage = await getImage({ src: backgroundImage });
+
+const panelStyle = `
+background-image: url('${optimizedBgImage.src}');
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 0;
+
+  @media(min-width: 900px) {
+    width: 50%;
+  }
+
+  background-color: var(--panelColor);
+  background-position-y: center;
+  background-position-x: center;
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-y: scroll;
+
+  & :before {
+    
+    background-attachment: fixed;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.071;
+    opacity: 1;
+    opacity: 0;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+`;
+
 ---
-<div class="panel" style={`background-image: url('${optimizedBgImage.src}')`}>
+<div class="panel" style={panelStyle}>
   <slot />
 </div>
 
 <style define:vars={{ panelColor: `var(${color})`}}>
   
   .panel {
-    width: 100%;
+    /* width: 100%;
     height: 100vh;
     position: relative;
     z-index: 0;
@@ -26,27 +70,27 @@ const optimizedBgImage = await getImage({ src: backgroundImage });
     background-blend-mode: overlay;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow-y: scroll;
+    overflow-y: scroll; */
 
-    &:before {
-      background-attachment: fixed;
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.071;
-      background-repeat: no-repeat;
-      background-position: 50% 0;
-      -ms-background-size: cover;
-      -o-background-size: cover;
-      -moz-background-size: cover;
-      -webkit-background-size: cover;
-      background-size: cover;
-    }
   }
+  /* .panel::before {
+    background-attachment: fixed;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.071;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+  } */
 
 </style>
