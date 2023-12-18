@@ -5,12 +5,25 @@ import { getImage } from "astro:assets";
 import panelBackground from "@/images/backgroundRight.png";
 import headerBackground from "@/images/backgroundLeft.png";
 const optimizedPanelImage = await getImage({ src: panelBackground });
+console.log('optimizedPanelImage:', optimizedPanelImage)
 const optimizedHeaderImage = await getImage({ src: headerBackground });
 ---
 
 <div class="grid_parent">
   <header style={`background-image: url('${optimizedHeaderImage.src}');`}>Portfolio</header>
-  <div class="panel" style={`background-image: url('${optimizedPanelImage.src}');`}>panel</div>
+  <div class="panel">
+    <div class="background">
+      
+    </div>
+    <div class="content">
+
+    </div>
+  </div>
+  <!-- 
+    <div class="panel" style={`
+    background-image: url('${optimizedPanelImage.src}');
+  `}>panel</div> 
+  -->
 </div>
 
 <style>
@@ -30,6 +43,7 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
   }
 
   .panel { 
+    background-image: url('${optimizedPanelImage.src}');
     background-color: var(--swamp);
   }
 </style>
