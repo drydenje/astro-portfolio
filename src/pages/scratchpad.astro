@@ -12,17 +12,19 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
 <div class="grid_parent">
   <header style={`background-image: url('${optimizedHeaderImage.src}');`}>Portfolio</header>
   <div class="panel">
-    <div class="background">
-      
-    </div>
     <div class="content">
-
+      CONTENT
+    </div>
+    <div class="background">
+      BG
     </div>
   </div>
   
-    <div class="panel" style={`
+  <!-- <div class="panel" >panel</div>  -->
+
+    <!-- style={`
     background-image: url('${optimizedPanelImage.src}');
-  `}>panel</div> 
+  `} -->
  
 </div>
 
@@ -35,6 +37,7 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
 
   .grid_parent > * {
     /* width: 50%; */
+    color: black;
   }
 
   .grid_parent > header {
@@ -43,7 +46,17 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
   }
 
   .panel { 
-    background-image: url('${optimizedPanelImage.src}');
+    /* background-image: url('${optimizedPanelImage.src}'); */
     background-color: var(--swamp);
+    /* opacity: 0.071; */
+  }
+
+  .content {
+    /* color: black; */
+    z-index: 1;
+  }
+  .background {
+    /* color: black; */
+    z-index: -1;
   }
 </style>
