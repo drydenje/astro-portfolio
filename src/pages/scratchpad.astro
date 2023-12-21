@@ -1,24 +1,29 @@
 ---
 import '@/styles/setup.css'
 import '@/styles/global.css'
-import { getImage } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import panelBackground from "@/images/backgroundRight.png";
 import headerBackground from "@/images/backgroundLeft.png";
 const optimizedPanelImage = await getImage({ src: panelBackground });
 console.log('optimizedPanelImage:', optimizedPanelImage)
 const optimizedHeaderImage = await getImage({ src: headerBackground });
 ---
-
+<!-- style={`background-image: url('${optimizedHeaderImage.src}');` -->
 <div class="grid_parent">
-  <header style={`background-image: url('${optimizedHeaderImage.src}');`}>Portfolio</header>
-  <div class="panel">
+  <header>
+    <div class="header__content">
+      <h1>Portfolio</h1>
+    </div>
+    <Image src={headerBackground} alt=""/>
+  </header>
+  <!-- <div class="panel">
     <div class="content">
       CONTENT
     </div>
     <div class="background">
       BG
     </div>
-  </div>
+  </div> -->
   
   <!-- <div class="panel" >panel</div>  -->
 
@@ -33,6 +38,19 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100vh;
+  }
+
+  .header__content {
+    position: relative;
+    align-self: center;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .header__content h1 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+    line-height: 1.3;
   }
 
   .grid_parent > * {
