@@ -40,6 +40,12 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
     grid-template-rows: 100vh;
   }
 
+  header {
+    display: grid;
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: 1fr; */
+    place-items: center;
+  }
   .header__content {
     position: relative;
     align-self: center;
