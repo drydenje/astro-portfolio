@@ -5,16 +5,31 @@ import { getImage, Image } from "astro:assets";
 import panelBackground from "@/images/backgroundRight.png";
 import headerBackground from "@/images/backgroundLeft.png";
 const optimizedPanelImage = await getImage({ src: panelBackground });
-console.log('optimizedPanelImage:', optimizedPanelImage)
+// console.log('optimizedPanelImage:', optimizedPanelImage)
 const optimizedHeaderImage = await getImage({ src: headerBackground });
+const styles = `
+  ::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: pink;
+    opacity: 0.0;
+    background-image: url('${optimizedHeaderImage.src}');
+    background-size: cover;
+    background-position: center;
+  }
+`;
 ---
 <!-- style={`background-image: url('${optimizedHeaderImage.src}');` -->
 <div class="grid_parent">
-  <header>
-    <div class="header__content">
+  <!-- <header class="bg-triangles" style={`background-image: url('${optimizedHeaderImage.src}');`}> -->
+  <!-- <header class="bg-triangles" style={ styles}> -->
+  <!-- <header style={ styles}> -->
+  <header class="bg-triangles">
+    <div>
       <h1>Portfolio</h1>
     </div>
-    <Image src={headerBackground} alt=""/>
   </header>
   <!-- <div class="panel">
     <div class="content">
@@ -25,7 +40,7 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
     </div>
   </div> -->
   
-  <div class="panel" >panel</div> 
+  <!-- <div class="panel" >panel</div>  -->
 
     <!-- style={`
     background-image: url('${optimizedPanelImage.src}');
@@ -36,7 +51,8 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
 <style>
   .grid_parent {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 1fr;
     grid-template-rows: 100vh;
   }
 
@@ -46,6 +62,31 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
     /* grid-template-rows: 1fr; */
     place-items: center;
   }
+
+  .bg-triangles {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    min-height: 500px;
+
+    position: relative;
+    isolation: isolate;
+  }
+
+  .bg-triangles::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: pink;
+    opacity: 0.3;
+
+    /* background-image: url('${optimizedPanelImage.src}'); */
+    background-image: url('backgroundLeft.png');
+    background-size: cover;
+    background-position: center;
+  }
+
   .header__content {
     position: relative;
     align-self: center;
@@ -66,7 +107,7 @@ const optimizedHeaderImage = await getImage({ src: headerBackground });
 
   .grid_parent > header {
     
-    background-color: var(--yellow-vivid-500);
+    /* background-color: var(--yellow-vivid-500); */
   }
 
   .panel { 
