@@ -1,11 +1,12 @@
 ---
 const { color } = Astro.props;
 import { getImage } from "astro:assets";
-import backgroundImage from "@/images/backgroundLeft.png";
-const optimizedBgImage = await getImage({ src: backgroundImage });
+// import backgroundImage from "@/images/backgroundLeft.webp";
+// const optimizedBgImage = await getImage({ src: backgroundImage });
+const bgImage = "/images/backgroundLeft.webp";
 
 const panelStyle = `
-background-image: url('${optimizedBgImage.src}');
+background-image: url(${bgImage});
   width: 100%;
   height: 100vh;
   position: relative;

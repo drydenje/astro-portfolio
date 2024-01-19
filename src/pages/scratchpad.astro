@@ -1,36 +1,17 @@
 ---
 import '@/styles/setup.css'
 import '@/styles/global.css'
-import { getImage, Image } from "astro:assets";
-import panelBackground from "@/images/backgroundRight.png";
-import headerBackground from "@/images/backgroundLeft.png";
-const optimizedPanelImage = await getImage({ src: panelBackground });
-// console.log('optimizedPanelImage:', optimizedPanelImage)
-const optimizedHeaderImage = await getImage({ src: headerBackground });
-const styles = `
-  ::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background: pink;
-    opacity: 0.0;
-    background-image: url('${optimizedHeaderImage.src}');
-    background-size: cover;
-    background-position: center;
-  }
-`;
+
+const panelBackground = "/images/backgroundRight.webp";
+const headerBackground = "/images/backgroundLeft.webp";
+
 ---
-<!-- style={`background-image: url('${optimizedHeaderImage.src}');` -->
+
 <div class="grid_parent">
-  <!-- <header class="bg-triangles" style={`background-image: url('${optimizedHeaderImage.src}');`}> -->
-  <!-- <header class="bg-triangles" style={ styles}> -->
-  <!-- <header style={ styles}> -->
-  <header class="bg-triangles">
-    <div>
+  <header class="bg-triangles">  
       <h1>Portfolio</h1>
-    </div>
   </header>
+
   <!-- <div class="panel">
     <div class="content">
       CONTENT
@@ -68,21 +49,22 @@ const styles = `
     place-content: center;
     text-align: center;
     min-height: 500px;
+    background: var(--yellow-vivid-500);
 
     position: relative;
     isolation: isolate;
   }
 
-  .bg-triangles::after {
+  .bg-triangles::before {
+    background-attachment: fixed;
     content: '';
     position: absolute;
     z-index: -1;
     inset: 0;
-    background: pink;
-    opacity: 0.3;
+    opacity: 0.071;
 
     /* background-image: url('${optimizedPanelImage.src}'); */
-    background-image: url('backgroundLeft.png');
+    background-image: url('/images/backgroundLeft.webp');
     background-size: cover;
     background-position: center;
   }
