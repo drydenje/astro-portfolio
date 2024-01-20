@@ -3,6 +3,7 @@ import '@fontsource/merriweather';
 import '@fontsource/lato';
 import '@/styles/setup.css'
 import '@/styles/global.css'
+import { ViewTransitions } from 'astro:transitions';
 import Navigation from '@/components/Navigation.astro';
 import Header from '@/components/Header.astro';
 
@@ -16,9 +17,10 @@ const {title} = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>it's me, Jeremy D - {title}</title>
+    <ViewTransitions />
 	</head>
 	<body>
-    <!-- <Navigation /> -->
+    <Navigation />
     <main>
       <Header title={title}/>
       <slot />
